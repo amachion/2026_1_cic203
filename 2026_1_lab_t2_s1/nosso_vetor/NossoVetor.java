@@ -2,6 +2,7 @@ public class NossoVetor {
     private int[] vetor;
     private int ocupacao;
     private int capacidade;
+    
 
     public NossoVetor () {
         vetor = new int[10];
