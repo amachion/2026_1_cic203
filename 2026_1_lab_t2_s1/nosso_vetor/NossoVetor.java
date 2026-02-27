@@ -110,6 +110,20 @@ public class NossoVetor {
             }
         }
     }
+    public void bubbleSortMelhorado () {
+        boolean trocou = true;
+        for (int i=1; i<ocupacao && trocou; i++) {//número de varreduras
+            trocou = false;
+            for (int j=0; j<ocupacao-i; j++) { //j é posição, começa do 0
+                if (vetor[j] > vetor[j+1]) {
+                    trocou = true;
+                    int temp = vetor[j];
+                    vetor[j] = vetor[j+1];
+                    vetor[j+1] = temp;
+                }
+            }
+        }
+    }
     public void preencheVetor () {
         Random random = new Random();
         for (int i=0; i<capacidade; i++) {
