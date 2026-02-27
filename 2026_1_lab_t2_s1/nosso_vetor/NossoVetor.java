@@ -1,9 +1,10 @@
+import java.util.Random;
+
 public class NossoVetor {
     private int[] vetor;
     private int ocupacao;
     private int capacidade;
     
-
     public NossoVetor () {
         vetor = new int[10];
         ocupacao = 0; //por clareza
@@ -89,13 +90,31 @@ public class NossoVetor {
     }
     @Override
     public String toString () {
-        if (estaVazio3()) return "vetor vazio";
-        String s = "capacidade = " + capacidade + "\n";
+        if (estaVazio3()) return "\nvetor vazio";
+        String s = "\ncapacidade = " + capacidade + "\n";
         for (int i=0; i < ocupacao; i++)
             s += vetor[i] + " ";
         return s;
     }
     public void esvaziaVetor () {
         ocupacao = 0;
+    }
+    public void bubbleSort () {
+        for (int i=1; i<ocupacao; i++) {//número de varreduras
+            for (int j=0; j<ocupacao-i; j++) { //j é posição, começa do 0
+                if (vetor[j] > vetor[j+1]) {
+                    int temp = vetor[j];
+                    vetor[j] = vetor[j+1];
+                    vetor[j+1] = temp;
+                }
+            }
+        }
+    }
+    public void preencheVetor () {
+        Random random = new Random();
+        for (int i=0; i<capacidade; i++) {
+            vetor[i] = random.nextInt(capacidade * 10);
+        }
+        ocupacao = capacidade;
     }
 }
