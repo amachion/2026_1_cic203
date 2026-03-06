@@ -110,6 +110,20 @@ public class NossoVetor {
             }
         }
     }
+    public int bubbleSortContador () {
+        int cont=0;
+        for (int i=1; i<ocupacao; i++) {//número de varreduras
+            for (int j=0; j<ocupacao-i; j++) { //j é posição, começa do 0
+                cont++;
+                if (vetor[j] > vetor[j+1]) {
+                    int temp = vetor[j];
+                    vetor[j] = vetor[j+1];
+                    vetor[j+1] = temp;
+                }
+            }
+        }
+        return cont;
+    }
     public void bubbleSortMelhorado () {
         boolean trocou = true;
         for (int i=1; i<ocupacao && trocou; i++) {//número de varreduras
@@ -122,6 +136,16 @@ public class NossoVetor {
                     vetor[j+1] = temp;
                 }
             }
+        }
+    }
+    public void insertion () {
+        for (int i=1; i<ocupacao; i++) {
+            int x = vetor[i];
+            int j;
+            for (j=i-1; j>=0 && vetor[j] > x; j--) {
+                vetor[j+1] = vetor[j];
+            }
+            vetor[j+1] = x;
         }
     }
     public void preencheVetor () {
@@ -138,6 +162,15 @@ public class NossoVetor {
         }
         return false;
     }
+    public int buscaLinearContador (int x) {
+        int cont = 0;
+        for (int i=0; i<ocupacao; i++) {
+            cont++;
+            if (vetor[i] == x)
+                return cont;
+        }
+        return cont;
+    }
     public boolean buscaBinaria (int x) {
         int ini = 0, fim = ocupacao-1;
         while (ini <= fim) {
@@ -147,5 +180,17 @@ public class NossoVetor {
             else fim = meio - 1;
         }
         return false;
+    }
+    public int buscaBinariaContador (int x) {
+        int ini = 0, fim = ocupacao-1;
+        int cont = 0;
+        while (ini <= fim) {
+            cont++;
+            int meio = (ini + fim) / 2;
+            if (vetor[meio] == x) return cont;
+            if (x > vetor[meio]) ini = meio + 1;
+            else fim = meio - 1;
+        }
+        return cont;
     }
 }
