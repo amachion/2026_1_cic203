@@ -19,7 +19,8 @@ public class No {
     }
     @Override
     public String toString() {
-        return "No [info=" + info + ", proximo=" + proximo + "]";
+        //return "No [info=" + info + ", proximo=" + proximo + "]";
+        return "[" + info + "]-> ";
     }
     
 }
