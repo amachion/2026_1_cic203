@@ -1,15 +1,13 @@
-import java.util.NoSuchElementException;
-
-public class Pilha {
+public class PilhaChar {
     private int topo;
-    private int[] dados;
+    private char[] dados;
     private int capacidade;
-    public Pilha (int capacidade) {
-        dados = new int[capacidade];
+    public PilhaChar (int capacidade) {
+        dados = new char[capacidade];
         topo = 0;
         this.capacidade = capacidade;
     }
-    public Pilha () {
+    public PilhaChar () {
         this(10);
     }
     public boolean pilhaVazia () {
@@ -21,15 +19,12 @@ public class Pilha {
     public int tamanho () {
         return topo;
     }
-    public boolean empilha (int i) {
+    public boolean empilha (char i) {
         if (pilhaCheia()) return false;
         dados[topo++] = i;
         return true;
     }
-    public int desempilha () {
-        //teste de pilha vazia vai ficar para a aplicação
-        // if (pilhaVazia())
-        //     throw new NoSuchElementException();
+    public char desempilha () {
         return dados[--topo];
     }
     @Override
