@@ -13,6 +13,7 @@ int soma (int i, int n) {
     if (i == n) return n;
     return i + soma(i+1, n);
 }
+
 int main () {
     printf ("tamanho do float  %d\n", sizeof(float));
     // for (int i=0; i <= 15; i++) {

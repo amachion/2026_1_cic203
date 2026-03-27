@@ -181,6 +181,14 @@ public class NossoVetor {
         }
         return false;
     }
+    public boolean buscaBinariaRec (int x, int ini, int fim) {
+        if (fim < ini) return false;
+        int meio = (ini + fim) / 2;
+        if (x == vetor[meio]) return true;
+        if (x < vetor[meio])
+            return buscaBinariaRec(x, ini, meio-1);
+        return buscaBinariaRec(x, meio + 1, fim);
+    }
     public int buscaBinariaContador (int x) {
         int ini = 0, fim = ocupacao-1;
         int cont = 0;
@@ -192,5 +200,32 @@ public class NossoVetor {
             else fim = meio - 1;
         }
         return cont;
+    }
+    private int partition(int p, int r) { 
+        int x = vetor[r];     /* O pivô é o último elemento do vetor */
+        int i = p-1;
+        int aux;
+        for(int j = p; j < r; j++) {
+            if (vetor[j] <= x) {
+                i = i + 1;
+                aux = vetor[i];
+                vetor[i] = vetor[j]; 
+                vetor[j] = aux;
+            }
+        }
+        i = i + 1;
+        aux = vetor[r]; 
+        vetor[r] = vetor[i]; 
+        vetor[i] = aux;
+        return i;
+    }
+    public void quicksort(int p, int r) {
+        System.out.printf ("p = %d, r = %d\n", p, r);
+        if (p < r) {
+            int q = partition(p, r);
+            System.out.printf("q = %d\n", q);
+            quicksort(p, q-1);
+            quicksort(q+1, r);
+        }
     }
 }
