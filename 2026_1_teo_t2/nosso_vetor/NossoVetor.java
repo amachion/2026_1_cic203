@@ -148,4 +148,66 @@ public class NossoVetor {
         }
         return false;
     }
+    private int partition(int p, int r) { 
+        int x = vetor[r];     /* O pivô é o último elemento do vetor */
+        int i = p-1;
+        int aux;
+        for(int j = p; j < r; j++) {
+            if (vetor[j] <= x) {
+                i = i + 1;
+                aux = vetor[i];
+                vetor[i] = vetor[j]; 
+                vetor[j] = aux;
+            }
+        }
+        i = i + 1;
+        aux = vetor[r]; 
+        vetor[r] = vetor[i]; 
+        vetor[i] = aux;
+        return i;
+    }
+    public void quicksort(int p, int r) {
+        //System.out.printf ("p = %d, r = %d\n", p, r);
+        if (p < r) {
+            int q = partition(p, r);
+            //System.out.printf("q = %d\n", q);
+            quicksort(p, q-1);
+            quicksort(q+1, r);
+        }
+    }
+    public void mergesort (int p, int r) {
+        if (p < r) {
+            int q = (p + r) / 2;
+            mergesort(p, q);
+            mergesort(q+1, r);
+            merge (p, q, r);
+        }
+    }
+    private void merge (int p, int q, int r) {
+        int tamLeft = q - p + 1 + 1; //posição para sentinela
+        int tamRight = r - (q+1) + 1 + 1; //posição para sentinela
+        
+        int[] left = new int[tamLeft];
+        int[] right = new int[tamRight];
+
+        int i, j, k;
+
+        for (i=0; i<tamLeft-1; i++) 
+            left[i] = vetor[p+i];
+        left[i] = 2147483647; 
+
+        for (j=0; j<tamRight-1; j++)
+            right[j] = vetor[q+1+j];
+        right[j] = 2147483647;
+
+        for (i=0, j=0, k=p; k<=r; k++)
+            if (left[i] <= right[j]) {
+                vetor[k] = left[i];
+                i++;
+            }
+            else {
+                vetor[k] = right[j];
+                j++;
+            }
+    }
 }
