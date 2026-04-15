@@ -220,10 +220,10 @@ public class NossoVetor {
         return i;
     }
     public void quicksort(int p, int r) {
-        System.out.printf ("p = %d, r = %d\n", p, r);
+        //System.out.printf ("p = %d, r = %d\n", p, r);
         if (p < r) {
             int q = partition(p, r);
-            System.out.printf("q = %d\n", q);
+            //System.out.printf("q = %d\n", q);
             quicksort(p, q-1);
             quicksort(q+1, r);
         }

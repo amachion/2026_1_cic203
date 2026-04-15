@@ -26,11 +26,11 @@ public class TesteOrdenacao {
             //System.out.println(v);
             System.out.println("quicksort\ncapacidade: " + capacidade + "\ntempo: " + (fim - ini) + " ms");
             //--------------------------------------------------------
-            //ini = Calendar.getInstance().getTimeInMillis();
-            //v.quicksort(0, capacidade-1);
-            //fim = Calendar.getInstance().getTimeInMillis();
+            ini = Calendar.getInstance().getTimeInMillis();
+            v.quicksort(0, capacidade-1);
+            fim = Calendar.getInstance().getTimeInMillis();
             //System.out.println(v);
-            //System.out.println("quicksort ordenado\ncapacidade: " + capacidade + "\ntempo: " + (fim - ini) + " ms");
+            System.out.println("quicksort ordenado\ncapacidade: " + capacidade + "\ntempo: " + (fim - ini) + " ms");
             //---------------------------------------------------------
             System.out.print("\ndigite a nova capacidade, 0 encerra: ");
             capacidade = scanner.nextInt();
