@@ -73,6 +73,27 @@ public class ListaDupla {
             tamanho++;
         }
     }
+    public boolean removePrimeraOcorrenciaX (int x) {
+        int posicao = primeiraOcorrenciaX(x);
+        if (posicao == -1) return false;
+        if (posicao == 1) {
+            removeInicio();
+            return true;
+        }
+        if (posicao == tamanho) {
+            removeFim();
+            return true;
+        }
+        No runner = primeiro;
+        int pos = 1;
+        while (pos < posicao) {
+            runner = runner.getProximo();
+            pos++;
+        }
+        runner.getAnterior().setProximo(runner.getProximo());
+        runner.getProximo().setAnterior(runner.getAnterior());
+        return true;
+    }
     @Override
     public String toString () {
         if (estaVazia())
@@ -84,5 +105,17 @@ public class ListaDupla {
             runner = runner.getProximo();
         }
         return s + "//";
+    }
+    public int primeiraOcorrenciaX (int x) {
+        if (estaVazia()) return -1;
+        int posicao = 1;
+        No runner = primeiro;
+        while (runner != null) {
+            if (runner.getInfo() == x)
+                return posicao;
+            runner = runner.getProximo();
+            posicao++;
+        }
+        return -1; 
     }
 }

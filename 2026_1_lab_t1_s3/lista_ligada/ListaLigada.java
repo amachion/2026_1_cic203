@@ -61,4 +61,32 @@ public class ListaLigada {
         }
         return s + "//";
     }
+    public int primeiraOcorrenciaX (int x) {
+        if (estaVazia()) return -1;
+        int posicao = 1;
+        No runner = primeiro;
+        while (runner != null && runner.getInfo() != x) {
+            runner = runner.getProximo();
+            posicao++;
+        }
+        if (runner == null) return -1;
+        return posicao;
+    }
+    public boolean removePrimeraOcorrenciaX (int x) {
+        int posicao = primeiraOcorrenciaX(x);
+        if (posicao == -1) return false;
+        if (posicao == 1) {
+            removeInicio();
+            return true;
+        }
+        int pos = 2;
+        No atual = primeiro.getProximo();
+        No anterior = primeiro;
+        while (pos < posicao) {
+            pos++;
+            anterior = atual;
+            atual = atual.getProximo();
+        }
+        anterior.setProximo(atual.getProximo());
+        return true;
 }
