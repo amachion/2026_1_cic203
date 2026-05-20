@@ -60,16 +60,33 @@ public class ListaLigada {
         return runner.getInfo(); //achei a posição
 
     }
-    @Override 
-    public String toString() {
-        if (estaVazia()) return ("lista vazia");
-        No runner = primeiro;
-        String s = "";
-        while (runner != null) { //percorre a lista até o final
-            s = s + runner.toString();
-            runner = runner.getProximo();
-        }
-        return s + "//";
+    // @Override 
+    // public String toString() {
+    //     if (estaVazia()) return ("lista vazia");
+    //     No runner = primeiro;
+    //     String s = "";
+    //     while (runner != null) { //percorre a lista até o final
+    //         s = s + runner.toString();
+    //         runner = runner.getProximo();
+    //     }
+    //     return s + "//";
+    // }
+    @Override
+public String toString() {
+    if (estaVazia()) 
+        return "lista vazia";
+
+    No runner = primeiro;
+    StringBuilder sb = new StringBuilder();
+
+    while (runner != null) { // percorre a lista até o final
+        sb.append(runner.toString());
+        runner = runner.getProximo();
     }
+
+    sb.append("//");
+
+    return sb.toString();
+}
 }
 
